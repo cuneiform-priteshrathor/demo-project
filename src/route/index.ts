@@ -2,6 +2,7 @@ import express, { Express, Request, Response, Router } from 'express';
 import AuthRoute from '../modules/Auth/AuthRoute';
 import bodyParser from 'body-parser';
 import HomeRoute from '../modules/other/homeRoute';
+import ProductRouter from '../modules/Product/ProductRoute';
 
 class App {
     public router: Router;
@@ -18,9 +19,10 @@ class App {
         // instance's
         let homeRoute = new HomeRoute();
         let authModule = new AuthRoute();
-
+        let productRouter = new ProductRouter
+        this.router.use('/home', homeRoute.router);
         this.router.use('/auth', authModule.router);
-        this.router.get('/home', homeRoute.router);
+        this.router.use('/product', productRouter.router);
     }
 }
 

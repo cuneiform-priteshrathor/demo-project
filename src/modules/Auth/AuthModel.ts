@@ -7,9 +7,8 @@ import mongoose, { Schema, Document } from 'mongoose';
 // }
 
 let userSchema: Schema = new Schema({
-    email: { type: String, required: true },
-    password: { type: String, required: true },
+    email: { type: String },
+    password: { type: String },
 });
 
-// Create and export the user model
 export default mongoose.model('User', userSchema);

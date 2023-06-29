@@ -1,4 +1,4 @@
-const message = {
+let message = {
     emailAllReady: "Email already registered",
     userNotFound: "User not found",
     InvalidPassword: "Invalid password",

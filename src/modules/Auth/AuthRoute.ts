@@ -9,7 +9,7 @@ class AuthRoute {
         this.router = express.Router();
         this.setupRoutes();
     }
-    public setupRoutes(): void {
+    public setupRoutes() {
         let authController = new AuthController;
         let authValidation = new AuthValidation;
         this.router.post('/signup', authValidation.validateSignupData, authController.signup);
