@@ -1,6 +1,7 @@
 import express, { Router } from "express";
 import ProductController from "./ProductController";
 import multer from 'multer';
+import ProductValidation from "./ProductValidation";
 class ProductRouter {
     public router;
     public storage = multer.diskStorage({
@@ -20,9 +21,10 @@ class ProductRouter {
     }
     setUpRouter() {
         let productController = new ProductController();
-        this.router.post('/add', this.uploadImg.single('demo'), productController.addProduct);
+        let productValidation = new ProductValidation();
+        this.router.post('/add', this.uploadImg.single('demo'), productValidation.validationProduct, productController.addProduct);
         this.router.get('/get/:id', productController.getProductId);
-        this.router.post('/update/:id', this.uploadImg.single('demo'), productController.updateProduct);
+        this.router.post('/update/:id', this.uploadImg.single('demo'), productValidation.validationProduct, productController.updateProduct);
         this.router.post('/delete/:id', productController.deleteProduct);
         this.router.get('/get', productController.getProduct);
     }

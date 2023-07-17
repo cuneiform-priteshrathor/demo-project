@@ -8,6 +8,7 @@ class AuthController {
     signup = async (req: Request, res: Response) => {
         try {
             let { email, password } = (req.body);
+            email = email.toLowerCase();
 
             let existingUser = await userSchema.findOne({ email });
             if (existingUser) {
@@ -15,7 +16,7 @@ class AuthController {
             }
 
             let hashedPassword = await bcrypt.hash(password, 10);
-
+            console.log('email: ', email);
             let newUser = new userSchema({
                 email,
                 password: hashedPassword,
@@ -34,7 +35,7 @@ class AuthController {
     login = async (req: Request, res: Response) => {
         try {
             let { email, password } = req.body;
-
+            email = email.toLowerCase();
             let existingUser = await userSchema.findOne({ email });
 
             if (!existingUser) {

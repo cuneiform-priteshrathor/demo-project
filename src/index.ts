@@ -22,14 +22,9 @@ class Server {
         await database.connect();
     }
     public setupRoutes() {
-        // let app = new App()
-        // // const apps = require('../public');
-        // let dir = __dirname.replace('src', 'public');
-        // this.app.use(express.static(path.join(dir, 'upload')));
-        // this.app.use(app.router);
-        const app = new App();
-        const publicDir = path.join(__dirname, '..', 'public');
-        this.app.use(express.static(path.join(publicDir, 'upload')));
+        let app = new App()
+        let dir = __dirname.replace('src', 'public');
+        this.app.use(express.static(path.join(dir, 'upload')));
         this.app.use(app.router);
     }
 

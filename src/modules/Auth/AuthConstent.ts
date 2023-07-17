@@ -7,6 +7,7 @@ let message = {
     internalError: "Internal server error",
     emailRequire: "Email  are required",
     passwordRequire: "Password are required",
+    invalidEmail: 'invalid email'
 }
 export default {
     message
